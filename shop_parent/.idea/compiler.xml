@@ -6,7 +6,9 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
+        <module name="shop_service_user" />
         <module name="shop_servie_product" />
+        <module name="shop_service_order" />
         <module name="shop_service_common" />
       </profile>
     </annotationProcessing>
@@ -15,6 +17,8 @@
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
       <module name="shop_parent" options="-parameters" />
       <module name="shop_service_common" options="-parameters" />
+      <module name="shop_service_order" options="-parameters" />
+      <module name="shop_service_user" options="-parameters" />
       <module name="shop_servie_product" options="-parameters" />
     </option>
   </component>

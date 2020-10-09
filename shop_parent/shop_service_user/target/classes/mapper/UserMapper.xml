@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+        <!DOCTYPE mapper
+                PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+                "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.mq.user.dao.IUsrerDao">
+    <!--插入语句-->
+    <update id="save" parameterType="com.mq.domain.User">
+        insert into tb_user value(
+        #{id},
+        #{username},
+        #{password},
+        #{age},
+        #{balance},
+        #{address}
+        );
+
+        <!--更新语句-->
+    </update>
+    <update id="update" parameterType="com.mq.domain.User">
+        update tb_user set
+            username=#{username},
+            password=#{password},
+            age=#{age},
+            balance=#{balance},
+            address=#{address}
+        where
+            id= #{id};
+    </update>
+
+    <!--删除语句-->
+    <delete id="delete" parameterType="integer">
+        delete from tb_user where id=#{id};
+    </delete>
+
+    <!--查询语句-->
+    <select id="findAll" resultType="com.mq.domain.User">
+        select * from tb_user;
+    </select>
+
+    <select id="findById" resultType="com.mq.domain.User" parameterType="integer">
+        select * from tb_user where id=#{id};
+    </select>
+</mapper>

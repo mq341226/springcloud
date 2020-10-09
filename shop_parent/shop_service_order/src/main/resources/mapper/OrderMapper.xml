@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+        <!DOCTYPE mapper
+                PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+                "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.mq.order.dao.IOrderDao">
+    <!--插入语句-->
+    <update id="save" parameterType="com.mq.domain.Order">
+        insert into tb_order value(
+            #{id},
+            #{user_id},
+            #{product_id},
+            #{number},
+            #{price},
+            #{amount},
+            #{product_name},
+            #{username}
+        );
+
+    <!--更新语句-->
+    </update>
+    <update id="update" parameterType="com.mq.domain.Order">
+        update tb_order set
+           user_id=#{user_id},
+           product_id=#{product_id},
+           number=#{number},
+           price=#{price},
+           amount=#{amount},
+           product_name=#{product_name},
+           username=#{username}
+        where
+            id= #{id};
+    </update>
+
+    <!--删除语句-->
+    <delete id="delete" parameterType="integer">
+        delete from tb_order where id=#{id};
+    </delete>
+
+    <!--查询语句-->
+    <select id="findAll" resultType="com.mq.domain.Order">
+        select * from tb_order;
+    </select>
+
+    <select id="findById" resultType="com.mq.domain.Order" parameterType="integer">
+        select * from tb_order where id=#{id};
+    </select>
+</mapper>

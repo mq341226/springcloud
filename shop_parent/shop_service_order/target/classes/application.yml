@@ -1,7 +1,6 @@
 # 配置服务访问端口
 server:
-  port: 8000
-
+  port: 8001
 # 配置数据库连接
 spring:
   datasource:
@@ -10,7 +9,7 @@ spring:
     username: root
     password: root
   application:
-    name: shop_service_product
+    name: shop_service_order
 
 # 配置mybatis扫描对象
 mybatis:

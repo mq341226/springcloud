@@ -1,18 +1,21 @@
-package com.mq.product;
+package com.mq.order;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
 import org.springframework.web.client.RestTemplate;
 
-/**
- * 启动类
- */
 @SpringBootApplication
-public class ProductApplication {
+public class OrderApplication {
     public static void main(String[] args) {
-        SpringApplication.run(ProductApplication.class,args);
+        SpringApplication.run(OrderApplication.class,args);
     }
 
-
+    /**
+     * 向容器注入RestTemplate
+     */
+    @Bean
+    public RestTemplate getRestTemplate() {
+        return new RestTemplate();
+    }
 }

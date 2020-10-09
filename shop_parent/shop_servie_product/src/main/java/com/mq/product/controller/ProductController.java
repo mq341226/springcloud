@@ -2,6 +2,7 @@ package com.mq.product.controller;
 
 import com.mq.domain.Product;
 import com.mq.product.service.IProductService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -10,6 +11,7 @@ import java.util.List;
 @RequestMapping("/product")
 public class ProductController {
     /*注入service*/
+    @Autowired
     private IProductService productService;
 
     /**
