@@ -1,0 +1,17 @@
+# 配置服务访问端口
+server:
+  port: 9001
+
+# 配置数据库连接
+spring:
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/shop?serverTimezone=UTC
+    username: root
+    password: root
+  application:
+    name: shop_service_product
+
+# 配置mybatis扫描对象
+mybatis:
+  mapper-locations: mapper/*.xml
