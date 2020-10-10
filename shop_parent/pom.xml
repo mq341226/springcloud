@@ -13,6 +13,7 @@
         <module>shop_service_common</module>
         <module>shop_service_order</module>
         <module>shop_service_user</module>
+        <module>shop_eureka_server</module>
     </modules>
 
     <!--添加springBoot起步依赖-->
@@ -66,7 +67,7 @@
             <dependency>
                 <groupId>org.springframework.cloud</groupId>
                 <artifactId>spring-cloud-dependencies</artifactId>
-                <version>Greenwich.RELEASE</version>
+                <version>Hoxton.RELEASE</version>
                 <type>pom</type>
                 <scope>import</scope>
             </dependency>
