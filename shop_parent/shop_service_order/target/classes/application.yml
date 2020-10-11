@@ -20,6 +20,7 @@ eureka:
   client:
     # eureka server的访问路径
     service-url:
+      # 8003为eureka的服务端口号
       defaultZone: http://localhost:8003/eureka/
   instance:
     # 使用ip进行注册

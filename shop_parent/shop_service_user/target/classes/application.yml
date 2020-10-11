@@ -15,3 +15,20 @@ spring:
 # 配置mybatis扫描对象
 mybatis:
   mapper-locations: mapper/*.xml
+
+# 添加Eureka Server的主机地址
+eureka:
+  client:
+    # eureka server的访问地址
+    service-url:
+      # 8003为eureka server的服务端口号
+      defaultZone: http://localhost:8003/eureka/,http://localhost:8004/eureka/
+  instance:
+    # 使用ip进行注册
+    prefer-ip-address: true
+    # 发送心跳续约间隔，以便快速注册
+    lease-renewal-interval-in-seconds: 5
+    # eureka client发送心跳给server端后，续约到期时间（默认90s）
+    lease-expiration-duration-in-seconds: 10
+    # 配置服务ip地址
+    instance-id: ${spring.cloud.client.ip-address}:${server.port}

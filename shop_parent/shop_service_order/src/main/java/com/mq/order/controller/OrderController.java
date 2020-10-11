@@ -4,6 +4,8 @@ import com.mq.domain.Product;
 import com.mq.order.service.IOrderService;
 import com.mq.domain.Order;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cloud.client.ServiceInstance;
+import org.springframework.cloud.client.discovery.DiscoveryClient;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.client.RestTemplate;
 
@@ -22,6 +24,10 @@ public class OrderController {
     /*注入RestTemplate*/
     @Autowired
     private RestTemplate restTemplate;
+
+    /*注入DiscoveryClient*/
+    @Autowired
+    private DiscoveryClient discoveryClient;
 
 
     /**
@@ -70,9 +76,14 @@ public class OrderController {
     /**
      * 下订单
      */
-    @PostMapping("/{id}")
+    @GetMapping("buy/{id}")
     public String order(@PathVariable Integer id){
-        Product product = restTemplate.getForObject("http://localhost:8000/product/"+id, Product.class);
+        /*根据微服务名称从注册中心获取相应的元数据信息*/
+        List<ServiceInstance> shop_service_product = discoveryClient.getInstances("shop_service_product");
+        /*硬编码获取需要调用的服务的URL*/
+//        Product product = restTemplate.getForObject("http://localhost:8000/product/"+id, Product.class);
+        /*使用元数据获取主机名以及端口号，进行URL获取*/
+        Product product = restTemplate.getForObject("http://" + shop_service_product.get(0).getHost() + ":" + shop_service_product.get(0).getPort() + "/product/" + id, Product.class);
         System.out.println(product);
         return "操作成功!!!";
     }

@@ -11,6 +11,9 @@ spring:
     password: root
   application:
     name: shop_service_product
+  cloud:
+    inetutils:
+      timeout-seconds: 20
 
 # 配置mybatis扫描对象
 mybatis:
@@ -21,7 +24,11 @@ eureka:
   client:
     # eureka server的访问路径
     service-url:
-      defaultZone: http://192.168.56.1:8003/eureka/
+      defaultZone: http://localhost:8003/eureka/,http://localhost:8004/eureka/
   instance:
     # 使用ip进行注册
-    prefer-ip-address: true
+    preferIpAddress: true
+
+
+
+

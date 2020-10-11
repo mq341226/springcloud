@@ -1,19 +1,40 @@
+# 搭建高可用的Eureka Server集群
+# Eureka1:8003
+# Eureka2:8004
+
+# 1、指定引用名称
+spring:
+  application:
+    name: show_eureka_serer
+
+
 # 配置服务访问端口
 server:
-  port: 8003
+  port: 8004
+
 
 # eureka服务器端控制
 eureka:
+#  instance:
+#    hostname: localhost
   instance:
-    hostname: 192.168.56.1
-    prefer-ip-address: true
+    hostname: localhost
   client:
     # registerWithEureka: 是否将自己注册到Eureka服务中，本身就是所有无需注册
-    register-with-eureka: false
     # fetchRegistry : 是否从Eureka中获取注册信息
-    fetch-registry: false
     # serviceUrl: 客户端与Eureka服务端进行交互的地址
+#    register-with-eureka: false
+#    fetch-registry: false
     service-url:
-      defaultZone: http://${eureka.instance.hostname}:${server.port}/eureka/
+      defaultZone: http://${eureka.instance.hostname}:8003/eureka/
+#      defaultZone: http://${eureka.instance.hostname}:${server.port}/eureka/
+
+  server:
+    # 关闭自我保护机制
+    enable-self-preservation: false
+    # 剔除无效节点时间间隔
+    eviction-interval-timer-in-ms: 4000
+
+
 
 
