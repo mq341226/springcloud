@@ -10,7 +10,7 @@ spring:
 
 # 配置服务访问端口
 server:
-  port: 8004
+  port: 8003
 
 
 # eureka服务器端控制
@@ -26,7 +26,7 @@ eureka:
 #    register-with-eureka: false
 #    fetch-registry: false
     service-url:
-      defaultZone: http://${eureka.instance.hostname}:8003/eureka/
+      defaultZone: http://${eureka.instance.hostname}:8004/eureka/
 #      defaultZone: http://${eureka.instance.hostname}:${server.port}/eureka/
 
   server:
@@ -34,6 +34,8 @@ eureka:
     enable-self-preservation: false
     # 剔除无效节点时间间隔
     eviction-interval-timer-in-ms: 4000
+    # 自我保护机制等待时间
+    #    wait-time-in-ms-when-sync-empty: 4000
 
 
 

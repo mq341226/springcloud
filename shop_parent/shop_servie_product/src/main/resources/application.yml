@@ -28,6 +28,8 @@ eureka:
   instance:
     # 使用ip进行注册
     preferIpAddress: true
+    # 配置服务ip地址
+    instance-id:  ${spring.cloud.client.ip-address}:${server.port}
 
 
 
